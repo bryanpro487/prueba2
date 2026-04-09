@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#e8541a">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DISFER MJ - Distribuidora de Ferretería</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#" onclick="navigate('home')">
+      <div class="logo-icon">🔧</div>
+      <div class="logo-text">
+        <strong>DISFER MJ</strong>
+        <span>Distribuidora de Ferretería</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="active" id="nav-home" onclick="navigate('home');return false;">Inicio</a>
+      <div style="position:relative">
+        <button class="menu-dropdown-btn" id="menuDropdownBtn" onclick="toggleDropdown()">
+          Menú
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="#" onclick="navigate('catalog');closeDropdown();return false;">🛠️ Catálogo de Productos</a>
+          <a href="#" onclick="navigate('about');closeDropdown();return false;">🏢 Sobre Nosotros</a>
+          <a href="#" onclick="navigate('contact');closeDropdown();return false;">📞 Contacto</a>
+        </div>
+      </div>
+      <a href="#" id="nav-about" onclick="navigate('about');return false;">Sobre Nosotros</a>
+      <a href="#" id="nav-contact" onclick="navigate('contact');return false;">Contacto</a>
+      <button class="cart-btn" onclick="toggleCart()">
+        🛒
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+    <button class="hamburger" onclick="toggleMobile()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="navigate('home');closeMobile();return false;">🏠 Inicio</a>
+  <a href="#" onclick="navigate('catalog');closeMobile();return false;">🛠️ Catálogo</a>
+  <a href="#" onclick="navigate('about');closeMobile();return false;">🏢 Sobre Nosotros</a>
+  <a href="#" onclick="navigate('contact');closeMobile();return false;">📞 Contacto</a>
+  <a href="#" onclick="toggleCart();closeMobile();return false;">🛒 Carrito</a>
+</div>
+
+<!-- ===== PAGE: HOME ===== -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Bienvenido a DISFER MJ</h1>
+      <p>Tu distribuidora de ferretería de confianza</p>
+      <p class="sub">Ofrecemos productos de calidad para profesionales y particulares. Más de 20 años de experiencia en el sector ferretero.</p>
+      <div class="btn-group">
+        <button class="btn btn-white" onclick="navigate('catalog')">Ver Catálogo →</button>
+        <button class="btn btn-outline" onclick="navigate('contact')">Contáctanos</button>
+        <p><iframe width="560" height="315" src="https://www.youtube.com/embed/3ccI2ts_cPA" title="" frameBorder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen><br>Powered by <a href="https://youtubeembedcode.com">embed youtube video</a> and <a href=“https://lasvegaspatiens.se/">las vegas (patiens)</a></iframe></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--gray-100);">
+    <div class="section-inner">
+      <h2 class="section-title">¿Por qué elegirnos?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3>Amplio Inventario</h3>
+          <p>Miles de productos disponibles para entrega inmediata en todas las categorías ferreteras.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Entrega Rápida</h3>
+          <p>Envíos a todo el país en tiempo récord con seguimiento en tiempo real.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Garantía de Calidad</h3>
+          <p>Productos certificados de las mejores marcas internacionales y nacionales.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Atención Personalizada</h3>
+          <p>Equipo experto a tu disposición para asesorarte en cada proyecto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h2>¿Listo para comenzar?</h2>
+    <p>Explora nuestro catálogo completo y descubre las mejores ofertas</p>
+    <button class="btn btn-white" onclick="navigate('catalog')">Explorar Productos</button>
+  </div>
+</div>
+
+<!-- ===== PAGE: CATALOG ===== -->
+<div class="page" id="page-catalog">
+  <div class="page-header">
+    <h1>Catálogo de Productos</h1>
+    <p>Encuentra todo lo que necesitas para tus proyectos</p>
+  </div>
+  <div class="catalog-controls">
+    <div class="search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar productos..." oninput="filterProducts()">
+    </div>
+    <div class="category-tabs" id="categoryTabs"></div>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</div>
+
+<!-- ===== PAGE: ABOUT ===== -->
+<div class="page" id="page-about">
+  <div class="page-header">
+    <h1>Sobre Nosotros</h1>
+    <p>Conoce la historia y valores de DISFER MJ</p>
+  </div>
+  <div class="about-layout">
+    <div class="about-text">
+      <h2>Nuestra Historia</h2>
+      <p>Fundada hace más de 20 años, <strong>DISFER MJ</strong> nació con la misión de proporcionar productos de ferretería de la más alta calidad a profesionales y particulares en toda Colombia.</p>
+      <p>Comenzamos como un pequeño almacén local y, gracias a la confianza de nuestros clientes y nuestro compromiso con la excelencia, hemos crecido hasta convertirnos en una de las distribuidoras más respetadas del sector.</p>
+      <p>Hoy contamos con un amplio catálogo de más de 5.000 productos, atendiendo a constructoras, contratistas, ferreterías y hogares en todo el territorio nacional.</p>
+    </div>
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&q=80" alt="Nuestro almacén">
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div><div class="stat-num">+20</div><div class="stat-label">Años de experiencia</div></div>
+      <div><div class="stat-num">+5000</div><div class="stat-label">Productos disponibles</div></div>
+      <div><div class="stat-num">+3000</div><div class="stat-label">Clientes satisfechos</div></div>
+      <div><div class="stat-num">32</div><div class="stat-label">Ciudades atendidas</div></div>
+    </div>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:56px 24px 0;">
+    <h2 class="section-title" style="text-align:left;margin-bottom:28px;">Nuestros Valores</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <h4>⭐ Calidad</h4>
+      <p>Solo trabajamos con productos certificados y marcas reconocidas que garantizan durabilidad y rendimiento.</p>
+    </div>
+    <div class="value-card">
+      <h4>🤝 Confianza</h4>
+      <p>Construimos relaciones duraderas con nuestros clientes basadas en la honestidad y la transparencia.</p>
+    </div>
+    <div class="value-card">
+      <h4>⚡ Eficiencia</h4>
+      <p>Optimizamos cada proceso para entregar sus pedidos en el menor tiempo posible, sin sacrificar la calidad.</p>
+    </div>
+    <div class="value-card">
+      <h4>💡 Innovación</h4>
+      <p>Renovamos constantemente nuestro catálogo con los últimos avances tecnológicos del sector ferretero.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: CONTACT ===== -->
+<div class="page" id="page-contact">
+  <div class="page-header">
+    <h1>Contáctanos</h1>
+    <p>Estamos aquí para ayudarte. Envíanos un mensaje</p>
+  </div>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div>
+          <h4>Ubicación</h4>
+          <p>Calle 45 #12-34<br>Bogotá, Colombia<br>Código Postal: 110111</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div>
+          <h4>Teléfono</h4>
+          <p>+57 (1) 234-5678<br>+57 300 123 4567</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📧</div>
+        <div>
+          <h4>Email</h4>
+          <p>info@disfermj.com<br>ventas@disfermj.com</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🕐</div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lunes – Viernes: 8:00am – 6:00pm<br>Sábados: 8:00am – 2:00pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h2>Envíanos un Mensaje</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre Completo *</label>
+          <input type="text" id="contactName" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" id="contactEmail" placeholder="tu@email.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" id="contactPhone" placeholder="+57 300 123 4567">
+        </div>
+        <div class="form-group">
+          <label>Asunto *</label>
+          <select id="contactSubject">
+            <option value="">Selecciona un asunto</option>
+            <option>Consulta de productos</option>
+            <option>Pedidos al por mayor</option>
+            <option>Soporte técnico</option>
+            <option>Facturación</option>
+            <option>Otro</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Mensaje *</label>
+        <textarea id="contactMessage" placeholder="Escribe tu mensaje aquí..."></textarea>
+      </div>
+      <button class="btn btn-blue" style="width:100%;justify-content:center;" onclick="submitContact()">Enviar Mensaje ✉️</button>
+      <div class="form-success" id="formSuccess">
+        ✅ ¡Mensaje enviado! Te contactaremos pronto.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CART ===== -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>🛍️ Carrito de Compras</h3>
+    <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      <p>Tu carrito está vacío</p>
+      <span>Agrega productos para comenzar</span>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Total:</span>
+      <strong id="cartTotal">$0</strong>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Finalizar Compra →</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="logo-icon">🔧</div>
+        <div class="logo-text">
+          <strong style="color:white;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;">DISFER MJ</strong>
+          <span style="color:#9ca3af;font-size:11px;">Distribuidora de Ferretería</span>
+        </div>
+      </div>
+      <p>Tu distribuidora de ferretería de confianza con más de 20 años de experiencia.</p>
+      <div class="social-links">
+        <a class="social-link" href="#">f</a>
+        <a class="social-link" href="#">in</a>
+        <a class="social-link" href="#">tw</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Enlaces Rápidos</h4>
+      <ul>
+        <li><a href="#" onclick="navigate('home');return false;">Inicio</a></li>
+        <li><a href="#" onclick="navigate('catalog');return false;">Catálogo</a></li>
+        <li><a href="#" onclick="navigate('about');return false;">Sobre Nosotros</a></li>
+        <li><a href="#" onclick="navigate('contact');return false;">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li>Venta al por Mayor</li>
+        <li>Venta al por Menor</li>
+        <li>Entregas a Domicilio</li>
+        <li>Asesoría Técnica</li>
+        <li>Garantías</li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contacto</h4>
+      <ul>
+        <li><span>📍</span><span>Calle 45 #12-34, Bogotá, Colombia</span></li>
+        <li><span>📞</span><span>+57 (1) 234-5678</span></li>
+        <li><span>📧</span><span>info@disfermj.com</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 DISFER MJ. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+// ===== DATA =====
+const products = [
+  { id:1, name:'Kit de Herramientas Profesional', cat:'Herramientas', price:285000, img:'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&q=80', desc:'Set completo de 32 herramientas en maletín.' },
+  { id:2, name:'Taladro Percutor Milwaukee 800W', cat:'Herramientas', price:420000, img:'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&q=80', desc:'Potente taladro para uso profesional con 13mm.' },
+  { id:3, name:'Pintura Vinilo Interior Blanca 4L', cat:'Pintura', price:65000, img:'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=400&q=80', desc:'Pintura lavable de alta cobertura para interiores.' },
+  { id:4, name:'Clavos de Acero 2" (caja x500)', cat:'Fijaciones', price:18500, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', desc:'Clavos galvanizados para carpintería y construcción.' },
+  { id:5, name:'Cable eléctrico THHN 12 AWG (rollo)', cat:'Electricidad', price:95000, img:'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&q=80', desc:'Cable 100m, ideal para instalaciones eléctricas.' },
+  { id:6, name:'Tubo PVC 4" x 6m', cat:'Plomería', price:38000, img:'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80', desc:'Tubo de alta presión para instalaciones sanitarias.' },
+  { id:7, name:'Llave inglesa ajustable 12"', cat:'Herramientas', price:48000, img:'https://images.unsplash.com/photo-1609205807107-2fa0a03f7fcb?w=400&q=80', desc:'Acero al cromo-vanadio, agarre antideslizante.' },
+  { id:8, name:'Pintura Esmalte Gris 1L', cat:'Pintura', price:32000, img:'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&q=80', desc:'Esmalte brillante para metal y madera, secado rápido.' },
+  { id:9, name:'Tornillos autorroscantes (caja x200)', cat:'Fijaciones', price:22000, img:'https://images.unsplash.com/photo-1565793979478-e26c62c9e9e7?w=400&q=80', desc:'Tornillos de acero inoxidable 3.5x50mm.' },
+  { id:10, name:'Interruptor sencillo 10A', cat:'Electricidad', price:8500, img:'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&q=80', desc:'Interruptor modular para instalaciones residenciales.' },
+  { id:11, name:'Llave de paso 1/2" PVC', cat:'Plomería', price:15000, img:'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80', desc:'Válvula de corte de alta durabilidad.' },
+  { id:12, name:'Sierra circular 7-1/4" 1400W', cat:'Herramientas', price:380000, img:'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&q=80', desc:'Sierra potente para corte de madera y derivados.' },
+];
+
+const categories = ['Todos', ...new Set(products.map(p => p.cat))];
+let activeCategory = 'Todos';
+let cart = [];
+
+// ===== NAVIGATION =====
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const nav = document.getElementById('nav-' + page);
+  if (nav) nav.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (page === 'catalog') renderProducts();
+}
+
+// ===== DROPDOWN =====
+function toggleDropdown() {
+  const btn = document.getElementById('menuDropdownBtn');
+  const menu = document.getElementById('dropdownMenu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('show');
+}
+function closeDropdown() {
+  document.getElementById('menuDropdownBtn').classList.remove('open');
+  document.getElementById('dropdownMenu').classList.remove('show');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.menu-dropdown-btn') && !e.target.closest('.dropdown-menu')) closeDropdown();
+});
+
+// ===== MOBILE MENU =====
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('show');
+}
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('show');
+}
+
+// ===== CATALOG =====
+function renderCategories() {
+  const tabs = document.getElementById('categoryTabs');
+  tabs.innerHTML = categories.map(c =>
+    `<button class="cat-tab ${c===activeCategory?'active':''}" onclick="setCategory('${c}')">${c}</button>`
+  ).join('');
+}
+function setCategory(cat) {
+  activeCategory = cat;
+  renderCategories();
+  renderProducts();
+}
+function filterProducts() {
+  renderProducts();
+}
+function renderProducts() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  let filtered = products.filter(p => {
+    const matchCat = activeCategory === 'Todos' || p.cat === activeCategory;
+    const matchQ = !q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+  const grid = document.getElementById('productsGrid');
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">😕 No se encontraron productos para tu búsqueda.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card">
+      <img class="product-img" src="${p.img}" alt="${p.name}" loading="lazy">
+      <div class="product-body">
+        <span class="product-cat">${p.cat}</span>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+      </div>
+      <div class="product-footer">
+        <span class="product-price">$${p.price.toLocaleString('es-CO')}</span>
+        <button class="add-cart-btn" onclick="addToCart(${p.id})">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          Agregar
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+renderCategories();
+
+// ===== CART =====
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  const existing = cart.find(x => x.id === id);
+  if (existing) { existing.qty++; }
+  else { cart.push({ ...p, qty: 1 }); }
+  updateCartUI();
+  showToast('✅ ' + p.name + ' agregado al carrito', 'success');
+}
+function removeFromCart(id) {
+  cart = cart.filter(x => x.id !== id);
+  updateCartUI();
+  renderCartItems();
+}
+function changeQty(id, delta) {
+  const item = cart.find(x => x.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) { removeFromCart(id); return; }
+  updateCartUI();
+  renderCartItems();
+}
+function updateCartUI() {
+  const count = cart.reduce((s, x) => s + x.qty, 0);
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = count;
+  badge.style.display = count > 0 ? 'flex' : 'none';
+  renderCartItems();
+}
+function renderCartItems() {
+  const el = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
+  if (!cart.length) {
+    el.innerHTML = `<div class="cart-empty">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      <p>Tu carrito está vacío</p><span>Agrega productos para comenzar</span></div>`;
+    footer.style.display = 'none';
+    return;
+  }
+  el.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <img src="${item.img}" alt="${item.name}">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">$${(item.price * item.qty).toLocaleString('es-CO')}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+        </div>
+      </div>
+      <button class="remove-item-btn" onclick="removeFromCart(${item.id})">🗑</button>
+    </div>
+  `).join('');
+  const total = cart.reduce((s, x) => s + x.price * x.qty, 0);
+  document.getElementById('cartTotal').textContent = '$' + total.toLocaleString('es-CO');
+  footer.style.display = 'block';
+}
+function toggleCart() {
+  document.getElementById('cartOverlay').classList.toggle('show');
+  document.getElementById('cartDrawer').classList.toggle('show');
+}
+function checkout() {
+  cart = [];
+  updateCartUI();
+  toggleCart();
+  showToast('🎉 ¡Pedido realizado! Te contactaremos pronto.', 'success');
+}
+
+// ===== CONTACT =====
+function submitContact() {
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const subject = document.getElementById('contactSubject').value;
+  const msg = document.getElementById('contactMessage').value.trim();
+  if (!name || !email || !subject || !msg) {
+    showToast('⚠️ Por favor completa todos los campos requeridos.');
+    return;
+  }
+  document.getElementById('formSuccess').classList.add('show');
+  document.getElementById('contactName').value = '';
+  document.getElementById('contactEmail').value = '';
+  document.getElementById('contactPhone').value = '';
+  document.getElementById('contactSubject').value = '';
+  document.getElementById('contactMessage').value = '';
+  setTimeout(() => document.getElementById('formSuccess').classList.remove('show'), 5000);
+}
+
+// ===== TOAST =====
+function showToast(msg, type = '') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast' + (type ? ' ' + type : '');
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 2800);
+}
+</script>
+</body>
+</html>
